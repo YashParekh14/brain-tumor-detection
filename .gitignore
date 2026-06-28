@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pth
+*.env
+venv/
+node_modules/
+data/
+*.zip
+.DS_Store
+mlruns/
+*.log

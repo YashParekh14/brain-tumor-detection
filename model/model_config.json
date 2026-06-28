@@ -1,0 +1,13 @@
+{
+  "model_name": "vit",
+  "class_names": [
+    "glioma",
+    "meningioma",
+    "notumor",
+    "pituitary"
+  ],
+  "num_classes": 4,
+  "img_size": 224,
+  "best_val_acc": 0.9506,
+  "auc_roc": 0.9866
+}
