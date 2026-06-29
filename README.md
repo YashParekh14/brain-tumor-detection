@@ -8,9 +8,9 @@
 ![React](https://img.shields.io/badge/React-18+-cyan?style=for-the-badge&logo=react)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-**A full-stack AI system for brain tumor classification from MRI scans**
+**A production-ready full-stack AI system for brain tumor classification from MRI scans**
 
-[🌐 Live Demo](https://brain-tumor-detection-nu-coral.vercel.app) · [📚 API Docs](https://helloyash789-brain-tumor-api.hf.space/docs) · [🤗 Hugging Face](https://huggingface.co/spaces/helloyash789/Brain-Tumor-api)
+[🌐 Live Demo](https://brain-tumor-detection-yw3m.vercel.app) · [📚 API Docs](https://helloyash789-brain-tumor-api.hf.space/docs) · [🤗 Hugging Face](https://huggingface.co/spaces/helloyash789/Brain-Tumor-api)
 
 </div>
 
@@ -50,7 +50,7 @@ NeuroScan AI classifies brain tumors from MRI scans into 4 categories using a fi
 
 | Service | URL | Status |
 |---------|-----|--------|
-| 🌐 Frontend | [brain-tumor-detection-nu-coral.vercel.app](https://brain-tumor-detection-nu-coral.vercel.app) | ![Live](https://img.shields.io/badge/status-live-green) |
+| 🌐 Frontend | [brain-tumor-detection-yw3m.vercel.app](https://brain-tumor-detection-yw3m.vercel.app) | ![Live](https://img.shields.io/badge/status-live-green) |
 | 🤗 API | [helloyash789-brain-tumor-api.hf.space](https://helloyash789-brain-tumor-api.hf.space) | ![Live](https://img.shields.io/badge/status-live-green) |
 | 📚 API Docs | [helloyash789-brain-tumor-api.hf.space/docs](https://helloyash789-brain-tumor-api.hf.space/docs) | ![Live](https://img.shields.io/badge/status-live-green) |
 
@@ -327,7 +327,7 @@ This project went through multiple phases of improvement:
 
 ---
 
-## 📝Description
+## 📝 Resume Description
 
 ```
 NeuroScan AI — Brain Tumor Detection System
@@ -344,13 +344,18 @@ Vision Transformer (ViT) | FastAPI | React | Docker | Hugging Face | Vercel
   Spaces (Docker) and Vercel
 ```
 
+---
+
+## ⚠️ Disclaimer
+
+This is a **research prototype** for educational purposes only. It is **not** approved or intended for clinical use. Always consult qualified medical professionals for diagnosis and treatment.
 
 ---
 
 ## 🔗 Links
 
 - **Dataset:** [Kaggle Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset)
-- **Live Demo:** [brain-tumor-detection-nu-coral.vercel.app](https://brain-tumor-detection-nu-coral.vercel.app)
+- **Live Demo:** [brain-tumor-detection-yw3m.vercel.app](https://brain-tumor-detection-yw3m.vercel.app)
 - **API:** [helloyash789-brain-tumor-api.hf.space](https://helloyash789-brain-tumor-api.hf.space)
 - **API Docs:** [helloyash789-brain-tumor-api.hf.space/docs](https://helloyash789-brain-tumor-api.hf.space/docs)
 
