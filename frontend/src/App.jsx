@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 
 const API_URL = "http://localhost:8000";
 
-
+// Match class names returned by API (lowercase)
 const CLASS_COLORS = {
   "glioma":      { bg: "#fef2f2", border: "#ef4444", text: "#b91c1c", badge: "#ef4444" },
   "meningioma":  { bg: "#fff7ed", border: "#f97316", text: "#c2410c", badge: "#f97316" },
@@ -73,7 +73,7 @@ export default function App() {
     setError(null);
   };
 
-  
+  // Use predicted_class (lowercase) to get colors
   const colors   = result ? CLASS_COLORS[result.predicted_class] : null;
   const severity = result ? SEVERITY_LABELS[result.info.severity] : null;
   const sortedProbs = result
