@@ -1,13 +1,15 @@
 import { useState, useCallback } from "react";
 
-const API_URL = "http://localhost:8000";
+// ─── API URL ──────────────────────────────────────────────────────────────────
+// Development:  http://localhost:8000
+// Production:   your Hugging Face Space URL
+const API_URL = "https://helloyash789-brain-tumor-api.hf.space";
 
-// Match class names returned by API (lowercase)
 const CLASS_COLORS = {
-  "glioma":      { bg: "#fef2f2", border: "#ef4444", text: "#b91c1c", badge: "#ef4444" },
-  "meningioma":  { bg: "#fff7ed", border: "#f97316", text: "#c2410c", badge: "#f97316" },
-  "notumor":     { bg: "#f0fdf4", border: "#22c55e", text: "#15803d", badge: "#22c55e" },
-  "pituitary":   { bg: "#fefce8", border: "#eab308", text: "#a16207", badge: "#eab308" },
+  "glioma":     { bg: "#fef2f2", border: "#ef4444", text: "#b91c1c", badge: "#ef4444" },
+  "meningioma": { bg: "#fff7ed", border: "#f97316", text: "#c2410c", badge: "#f97316" },
+  "notumor":    { bg: "#f0fdf4", border: "#22c55e", text: "#15803d", badge: "#22c55e" },
+  "pituitary":  { bg: "#fefce8", border: "#eab308", text: "#a16207", badge: "#eab308" },
 };
 
 const SEVERITY_LABELS = {
@@ -52,7 +54,10 @@ export default function App() {
     formData.append("file", file);
 
     try {
-      const res = await fetch(`${API_URL}/predict`, { method: "POST", body: formData });
+      const res = await fetch(`${API_URL}/predict`, {
+        method: "POST",
+        body: formData
+      });
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.detail || "Prediction failed");
@@ -73,9 +78,8 @@ export default function App() {
     setError(null);
   };
 
-  // Use predicted_class (lowercase) to get colors
-  const colors   = result ? CLASS_COLORS[result.predicted_class] : null;
-  const severity = result ? SEVERITY_LABELS[result.info.severity] : null;
+  const colors      = result ? CLASS_COLORS[result.predicted_class] : null;
+  const severity    = result ? SEVERITY_LABELS[result.info.severity] : null;
   const sortedProbs = result
     ? Object.entries(result.probabilities).sort((a, b) => b[1] - a[1])
     : [];
@@ -88,7 +92,7 @@ export default function App() {
       color: "#f8fafc",
     }}>
 
-      {/* ── Header ── */}
+      {/* Header */}
       <header style={{
         borderBottom: "1px solid rgba(255,255,255,0.08)",
         padding: "18px 32px",
@@ -123,7 +127,7 @@ export default function App() {
 
       <main style={{ maxWidth: 900, margin: "0 auto", padding: "40px 24px" }}>
 
-        {/* ── Hero ── */}
+        {/* Hero */}
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <h1 style={{
             fontSize: "clamp(28px, 5vw, 42px)",
@@ -146,7 +150,7 @@ export default function App() {
           gap: 24, alignItems: "start"
         }}>
 
-          {/* ── Upload Panel ── */}
+          {/* Upload Panel */}
           <div style={{
             background: "rgba(255,255,255,0.04)",
             border: "1px solid rgba(255,255,255,0.08)",
@@ -156,7 +160,6 @@ export default function App() {
               Upload MRI Scan
             </h2>
 
-            {/* Drop Zone */}
             <div
               onDrop={onDrop}
               onDragOver={onDragOver}
@@ -193,7 +196,6 @@ export default function App() {
               style={{ display: "none" }}
               onChange={(e) => handleFile(e.target.files[0])} />
 
-            {/* Buttons */}
             {preview ? (
               <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
                 <button onClick={() => document.getElementById("fileInput").click()} style={{
@@ -230,7 +232,6 @@ export default function App() {
               </button>
             )}
 
-            {/* Error */}
             {error && (
               <div style={{
                 marginTop: 14, padding: "12px 16px",
@@ -244,11 +245,9 @@ export default function App() {
 
           </div>
 
-          {/* ── Result Panel ── */}
+          {/* Result Panel */}
           {result && colors && (
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-
-              {/* Main Result Card */}
               <div style={{
                 background: colors.bg,
                 border: `1px solid ${colors.border}`,
@@ -259,17 +258,10 @@ export default function App() {
                   alignItems: "flex-start", marginBottom: 16
                 }}>
                   <div>
-                    <div style={{
-                      fontSize: 11, fontWeight: 600,
-                      color: colors.text, letterSpacing: 1, marginBottom: 4
-                    }}>
+                    <div style={{ fontSize: 11, fontWeight: 600, color: colors.text, letterSpacing: 1, marginBottom: 4 }}>
                       PREDICTION RESULT
                     </div>
-                    {/* Use display_name for friendly name */}
-                    <div style={{
-                      fontSize: 28, fontWeight: 800,
-                      color: colors.text, letterSpacing: "-0.5px"
-                    }}>
+                    <div style={{ fontSize: 28, fontWeight: 800, color: colors.text, letterSpacing: "-0.5px" }}>
                       {result.display_name}
                     </div>
                   </div>
@@ -282,7 +274,6 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Confidence Bar */}
                 <div style={{ marginBottom: 14 }}>
                   <div style={{
                     height: 8, borderRadius: 4,
@@ -313,7 +304,6 @@ export default function App() {
                 )}
               </div>
 
-              {/* Probability Breakdown */}
               <div style={{
                 background: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(255,255,255,0.08)",
@@ -349,7 +339,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Reset */}
               <button onClick={reset} style={{
                 padding: "12px", borderRadius: 12,
                 background: "transparent",
@@ -362,16 +351,15 @@ export default function App() {
           )}
         </div>
 
-        {/* ── How It Works ── */}
         {!result && (
           <div style={{
             marginTop: 40,
             display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16,
           }}>
             {[
-              { icon: "🧠", title: "Upload MRI",   desc: "Upload a brain MRI scan in JPG or PNG format" },
-              { icon: "⚡", title: "AI Analysis",  desc: "Vision Transformer (ViT) analyses the scan in seconds" },
-              { icon: "📊", title: "Get Results",  desc: "Receive classification with confidence scores" },
+              { icon: "🧠", title: "Upload MRI",  desc: "Upload a brain MRI scan in JPG or PNG format" },
+              { icon: "⚡", title: "AI Analysis", desc: "Vision Transformer (ViT) analyses the scan in seconds" },
+              { icon: "📊", title: "Get Results", desc: "Receive classification with confidence scores" },
             ].map((step, i) => (
               <div key={i} style={{
                 background: "rgba(255,255,255,0.03)",
